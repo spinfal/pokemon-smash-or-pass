@@ -1,0 +1,28 @@
+{
+  "name": "pokemon-smash-or-pass",
+  "version": "1.0.0",
+  "description": "Choose whether or not you want to smash or pass a Pokemon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spinfal/pokemon-smash-or-pass.git"
+  },
+  "author": "Spinfal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/spinfal/pokemon-smash-or-pass/issues"
+  },
+  "homepage": "https://github.com/spinfal/pokemon-smash-or-pass#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

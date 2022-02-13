@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pokemon Smash or Pass</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style type="text/tailwindcss">
+            @layer utilities {
+                .noto-sans {
+                    font-family: 'Noto Sans', sans-serif;
+                }
+
+                .scrollbar::-webkit-scrollbar {
+                    display: none;
+                    width: 0;
+                }
+            }
+        </style>
+    </head>
+    <body class="bg-no-repeat bg-fixed bg-[url('images/field.png')] bg-cover">
+        <main>
+            <div class="container mx-auto">
+                <div class="flex flex-wrap justify-center">
+                    <div class="w-full p-4">
+                        <div class="flex flex-col items-center">
+                            <div class="flex-1">
+                                <img src="images/Logo.png" alt="Smash or Pass logo" draggable="false">
+                            </div>
+                            <div class="flex-1 mt-10">
+                                <figure>
+                                    <img class="max-w-xs border-transparent rounded-3xl" id="pokemon" src="images/pokeball.gif" alt="Pokemon Image" draggable="false">
+                                    <figcaption class="absolute text-sm -mt-10 text-white px-4 select-none">
+                                        <div>
+                                            <h1 class="text-slate-300/75">Name</h1>
+                                        </div>
+                                        <div>
+                                            <h1 class="text-slate-100" id="pokemonName"></h1>
+                                        </div>
+                                    </figcatpion>
+                                </figure>
+                            </div>
+                            <div class="flex-1 mt-4">
+                                <div class="grid auto-rows-auto	grid-cols-2 gap-x-7">
+                                    <button id="smash" class="noto-sans border-4 border-solid border-lime-700 text-white rounded-xl bg-lime-600 hover:bg-lime-700 py-4 px-7">Smash</button>
+                                    <button id="pass" class="noto-sans border-4 border-solid border-red-700 text-white rounded-xl bg-red-600 hover:bg-red-700 py-4 px-7">Pass</button>
+                                </div>
+                            </div>
+                            <div class="flex-1 mt-6">
+                                <div class="grid auto-rows-auto	grid-cols-2 gap-x-7 text-center w-64">
+                                    <div class="scrollbar border-solid border-2 rounded-xl py-2 border-lime-500 bg-lime-800/25 hover:bg-lime-800/30 overflow-auto h-64 text-white"><h4 class="text-2xl underline mb-1">Smash</h4><div id="smashPokemon"></div></div>
+                                    <div class="scrollbar border-solid border-2 rounded-xl py-2 border-red-500 bg-red-800/25 hover:bg-red-800/30 overflow-auto h-64 text-white"><h4 class="text-2xl underline mb-1">Pass</h4><div id="passPokemon"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    <script src="js/script.js"></script>
+    </body>
+</html>
