@@ -60,8 +60,8 @@ smash.addEventListener('click', (e) => {
     smash.disabled = true;
     const pokemon = JSON.parse(sessionStorage.getItem('pokemon'));
     const smashOrPass = JSON.parse(sessionStorage.getItem('smashOrPass'));
-    var smashCount = JSON.parse(sessionStorage.getItem('smashCount'));
-    var passCount = JSON.parse(sessionStorage.getItem('passCount'));
+    let smashCount = JSON.parse(sessionStorage.getItem('smashCount'));
+    let passCount = JSON.parse(sessionStorage.getItem('passCount'));
 
     if (e.isTrusted) {
         // push to array
@@ -100,8 +100,8 @@ pass.addEventListener('click', (e) => {
     pass.disabled = true;
     const pokemon = JSON.parse(sessionStorage.getItem('pokemon'));
     const smashOrPass = JSON.parse(sessionStorage.getItem('smashOrPass'));
-    var passCount = JSON.parse(sessionStorage.getItem('passCount'));
-    var smashCount = JSON.parse(sessionStorage.getItem('smashCount'));
+    let passCount = JSON.parse(sessionStorage.getItem('passCount'));
+    let smashCount = JSON.parse(sessionStorage.getItem('smashCount'));
 
     if (e.isTrusted) {
         // push to array
