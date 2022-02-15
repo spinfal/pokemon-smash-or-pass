@@ -6,7 +6,6 @@ const smash = document.getElementById('smash');
 const pass = document.getElementById('pass');
 const smashPokemon = document.getElementById('smashPokemon');
 const passPokemon = document.getElementById('passPokemon');
-const currentPokemon = sessionStorage.getItem('currentPokemon');
 
 fetch('/api/pokemon').then(res => res.json()).then(data => {
     if (!sessionStorage.getItem('pokemon')) sessionStorage.setItem('pokemon', JSON.stringify(data));
@@ -16,7 +15,7 @@ fetch('/api/pokemon').then(res => res.json()).then(data => {
     sessionStorage.setItem('pokemonLength', data.length);
 }).then(() => {
     const pokemon = JSON.parse(sessionStorage.getItem('pokemon'));
-
+    const currentPokemon = sessionStorage.getItem('currentPokemon');
     fetch(`https://pokeapi.co/api/v2/pokemon/${currentPokemon ?? pokemon[0]}`).then(res => res.json()).then(res => {
         pokemonName.innerText = currentPokemon ?? pokemon[0];
         sessionStorage.setItem('pokemon', JSON.stringify(pokemon));
@@ -60,6 +59,7 @@ smash.addEventListener('click', (e) => {
     smash.disabled = true;
     const pokemon = JSON.parse(sessionStorage.getItem('pokemon'));
     const smashOrPass = JSON.parse(sessionStorage.getItem('smashOrPass'));
+    const currentPokemon = sessionStorage.getItem('currentPokemon');
     let smashCount = JSON.parse(sessionStorage.getItem('smashCount'));
     let passCount = JSON.parse(sessionStorage.getItem('passCount'));
 
@@ -100,6 +100,7 @@ pass.addEventListener('click', (e) => {
     pass.disabled = true;
     const pokemon = JSON.parse(sessionStorage.getItem('pokemon'));
     const smashOrPass = JSON.parse(sessionStorage.getItem('smashOrPass'));
+    const currentPokemon = sessionStorage.getItem('currentPokemon');
     let passCount = JSON.parse(sessionStorage.getItem('passCount'));
     let smashCount = JSON.parse(sessionStorage.getItem('smashCount'));
 
