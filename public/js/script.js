@@ -7,6 +7,7 @@ if (!sessionStorage.getItem('passCount')) sessionStorage.setItem('passCount', 0)
 // set variables
 const currentPlace = sessionStorage.getItem('currentPlace');
 const smashPercentage = document.getElementById('smashPercentage');
+const weeee = ['<3', 'owo', 'hi', 'spin.rip'];
 
 // fetch the list of Pokemon names and set the image
 fetch('/api/pokemon').then(res => res.json()).then(data => {
