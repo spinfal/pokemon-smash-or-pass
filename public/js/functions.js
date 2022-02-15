@@ -14,6 +14,8 @@ let passCount = parseInt(sessionStorage.getItem('passCount'));
 const choice = (value) => {
     if (!value) return console.log('Invalid params passed to choice()');
 
+    // TODO: Add some sort of alert on this line to stop and tell the user that they have reached the end, also maybe letting them know that they went through 898 Pokemon for literally no reason.
+    
     try {
         // disable buttons
         smash.disabled = true;
