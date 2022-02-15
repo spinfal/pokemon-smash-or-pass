@@ -16,6 +16,7 @@ fetch('/api/pokemon').then(res => res.json()).then(data => {
 }).then(() => {
     const pokemon = JSON.parse(sessionStorage.getItem('pokemon'));
     const currentPokemon = sessionStorage.getItem('currentPokemon');
+
     fetch(`https://pokeapi.co/api/v2/pokemon/${currentPokemon ?? pokemon[0]}`).then(res => res.json()).then(res => {
         pokemonName.innerText = currentPokemon ?? pokemon[0];
         sessionStorage.setItem('pokemon', JSON.stringify(pokemon));
