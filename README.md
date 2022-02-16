@@ -23,4 +23,7 @@ npm i
 npm start
 ```
 
+## Credit ❤️
+A big thanks to [pokeapi](https://pokeapi.co/) for all of the Pokemon images. They are what made this possible (and easier).
+
 ##### made by spin <3 -- [spin.rip](https://spin.rip/)
