@@ -48,3 +48,24 @@ if (sessionStorage.getItem('smashCount') + sessionStorage.getItem('passCount') >
 // set click event listeners for smash and pass buttons
 smash.addEventListener('click', (e) => {if(e.isTrusted)choice('smash')});
 pass.addEventListener('click', (e) => {if(e.isTrusted)choice('pass')});
+
+// listen for keypresses and check if it is P or S
+document.onkeyup = function (e) {
+    try {
+        e = e || window.event;
+        if (!e.isTrusted) return;
+        if (e.keyCode == 115 || e.keyCode == 83) {
+            // 115 or 83
+            choice('smash');
+        } else if (e.keyCode == 112 || e.keyCode == 80) {
+            // 112 or 80
+            choice('pass');
+        } else {
+            return;
+        }
+    } catch (err) {
+        throwError(err);
+    }
+};
+
+window.onload = showMain();

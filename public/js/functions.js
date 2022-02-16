@@ -101,7 +101,7 @@ const updateImage = (place, alt) => {
 // }
 
 /**
- * 
+ * Returns an error in the DevConsole and an alert()
  * @param {*} e - the error that was thrown
  */
 const throwError = (e) => {
@@ -110,4 +110,11 @@ const throwError = (e) => {
     alert('An error has occured. Check the developer console for more information.');
     console.error('Want to report this issue? Visit: https://github.com/spinfal/pokemon-smash-or-pass/issues\n', e);
     return console.info('%cPlease include a screenshot of this error when making an issue.', 'color: lightblue; font-size: 20px;');
+}
+
+/**
+ * Unhides the <main> element when onload event is triggered and script files have loaded.
+ */
+const showMain = () => {
+    document.getElementsByTagName('main')[0].classList.remove('hidden');
 }
