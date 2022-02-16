@@ -17,15 +17,19 @@ fetch('/api/pokemon').then(res => res.json()).then(data => {
 
     // set dialog elements
     document.getElementById('pokemonLength').innerText = data.length;
-});
+}).catch(e => throwError(e));
 
 // add names to the smash and pass categories
 if (sessionStorage.getItem('smashOrPass').length >= 0) {
-    const smashOrPass = JSON.parse(sessionStorage.getItem('smashOrPass'));
-    smashOrPass.forEach(item => {
-        item = JSON.parse(item);
-        item.type === 'smash' ? smashPokemon.innerHTML += `<em><p>${item.name}</p></em>` : passPokemon.innerHTML += `<em><p>${item.name}</p></em>`;
-    })
+    try {
+        const smashOrPass = JSON.parse(sessionStorage.getItem('smashOrPass'));
+        smashOrPass.forEach(item => {
+            item = JSON.parse(item);
+            item.type === 'smash' ? smashPokemon.innerHTML += `<em><p>${item.name}</p></em>` : passPokemon.innerHTML += `<em><p>${item.name}</p></em>`;
+        })
+    } catch (e) {
+        throwError(e);
+    }
 }
 
 // Get the smash count
