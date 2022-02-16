@@ -80,8 +80,9 @@ const updateImage = (place, alt) => {
         pokemonImage.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${place}.png`;
         pokemonImage.alt = alt ?? 'Pokemon Image';
         pokemonName.innerText = alt ?? 'N/A';
+        console.log(place, parseInt(sessionStorage.getItem('pokemonLength')))
         // load next image to speed up load
-        if (place <= parseInt(sessionStorage.getItem('pokemonLength'))) {
+        if (parseInt(place) !== parseInt(sessionStorage.getItem('pokemonLength'))) {
             fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${parseInt(place) + 1}.png`).then(() => console.info('Preloaded next image.')).catch(e => throwError(e));
         }
     } catch (e) {
