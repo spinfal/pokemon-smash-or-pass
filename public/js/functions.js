@@ -86,7 +86,7 @@ const updateImage = (place, alt) => {
 }
 
 /**
- * Shows a <dialog> when the user has reached the end of the list.
+ * Shows a dialog when the user has reached the end of the list.
  */
 const endDialog = () => {
     const div = document.createElement('div');
@@ -131,7 +131,7 @@ const throwError = (e) => {
 }
 
 /**
- * Unhides the <main> element when onload event is triggered and script files have loaded.
+ * Unhides the main element when onload event is triggered and script files have loaded.
  */
 const showMain = () => {
     document.getElementsByTagName('main')[0].classList.remove('hidden');
