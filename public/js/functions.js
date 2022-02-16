@@ -16,7 +16,7 @@ const choice = (e, value) => {
     if (!value || !e) return console.log('Invalid params passed to choice()');
     if (!e.isTrusted) return;
 
-    if (sessionStorage.getItem('currentPlace') >= sessionStorage.getItem('pokemonLength')) {
+    if (parseInt(sessionStorage.getItem('currentPlace')) >= parseInt(sessionStorage.getItem('pokemonLength'))) {
         return endDialog();
     }
     
