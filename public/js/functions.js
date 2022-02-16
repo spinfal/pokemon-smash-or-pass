@@ -9,12 +9,16 @@ let passCount = parseInt(sessionStorage.getItem('passCount'));
 
 /**
  * Checks if user has clicked "smash" or "pass" and then runs the appropriate code
+ * @param {object} e - the event object
  * @param {string} value - the choice the user has made. Either "smash" or "pass"
  */
-const choice = (value) => {
-    if (!value) return console.log('Invalid params passed to choice()');
+const choice = (e, value) => {
+    if (!value || !e) return console.log('Invalid params passed to choice()');
+    if (!e.isTrusted) return;
 
-    // TODO: Add some sort of alert on this line to stop and tell the user that they have reached the end, also maybe letting them know that they went through 898 Pokemon for literally no reason.
+    if (sessionStorage.getItem('currentPlace') >= sessionStorage.getItem('pokemonLength')) {
+        return endDialog();
+    }
     
     try {
         // disable buttons
@@ -79,6 +83,20 @@ const updateImage = (place, alt) => {
     } catch (e) {
         throwError(e);
     }
+}
+
+/**
+ * Shows a <dialog> when the user has reached the end of the list.
+ */
+const endDialog = () => {
+    const div = document.createElement('div');
+    div.innerHTML = `<a class="p-1 px-4 rounded-2xl bg-cyan-500 drop-shadow-xl text-white" href="https://twitter.com/intent/tweet?text=I literally just went through all ${sessionStorage.getItem('pokemonLength')} Pokemon! I would smash ${sessionStorage.getItem('smashCount')} of them and I would pass ${sessionStorage.getItem('passCount')} of them.&url=${location.href}" target="_blank">Tweet about it</a>`;
+    document.getElementById('tweetResults').appendChild(div);
+    document.getElementsByTagName('figure')[0].setAttribute('style', 'opacity: 0;');
+    smash.disabled = true;
+    pass.disabled = true;
+    const dialog = document.getElementById('endDialog');
+    dialog.show();
 }
 
 // /**

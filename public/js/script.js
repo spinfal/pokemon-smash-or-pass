@@ -14,6 +14,9 @@ fetch('/api/pokemon').then(res => res.json()).then(data => {
     sessionStorage.setItem('pokemon', JSON.stringify(data));
     sessionStorage.setItem('pokemonLength', data.length);
     updateImage(currentPlace, data[currentPlace - 1]);
+
+    // set dialog elements
+    document.getElementById('pokemonLength').innerText = data.length;
 });
 
 // add names to the smash and pass categories
@@ -46,8 +49,8 @@ if (sessionStorage.getItem('smashCount') + sessionStorage.getItem('passCount') >
 }
 
 // set click event listeners for smash and pass buttons
-smash.addEventListener('click', (e) => {if(e.isTrusted)choice('smash')});
-pass.addEventListener('click', (e) => {if(e.isTrusted)choice('pass')});
+smash.addEventListener('click', (e) => choice(e, 'smash'));
+pass.addEventListener('click', (e) => choice(e, 'pass'));
 
 // listen for keypresses and check if it is P or S
 document.onkeyup = function (e) {
