@@ -63,10 +63,10 @@ document.onkeyup = function (e) {
         if (!e.isTrusted) return;
         if (e.keyCode == 115 || e.keyCode == 83) {
             // 115 or 83
-            choice('smash');
+            choice(e, 'smash');
         } else if (e.keyCode == 112 || e.keyCode == 80) {
             // 112 or 80
-            choice('pass');
+            choice(e, 'pass');
         } else {
             return;
         }

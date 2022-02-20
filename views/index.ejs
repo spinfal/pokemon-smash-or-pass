@@ -55,6 +55,13 @@
                 .hidden {
                     display: none;
                 }
+
+                kbd {
+                    padding: 2px 4px 2px 4px;
+                    border-radius: 5px;
+                    background-color: #526f5d;
+                    color: #eff3f0;
+                }
             }
         </style>
     </head>
@@ -99,11 +106,12 @@
                                     </figcatpion>
                                 </figure>
                             </div>
-                            <div class="flex-1 mt-4">
+                            <div class="flex-1 mt-4 text-center">
                                 <div class="grid auto-rows-auto	grid-cols-2 gap-x-7">
                                     <button id="smash" class="noto-sans border-4 border-solid border-lime-700 text-white rounded-xl bg-lime-600 hover:bg-lime-700 py-4 px-7">Smash</button>
                                     <button id="pass" class="noto-sans border-4 border-solid border-red-700 text-white rounded-xl bg-red-600 hover:bg-red-700 py-4 px-7">Pass</button>
                                 </div>
+                                <sub class="text-slate-300/75">You can also use the keys <kbd>S</kbd> and <kbd>P</kbd></sub>
                             </div>
                             <div class="flex-1 mt-5">
                                 <h1 class="text-2xl drop-shadow-md mb-1 pb-1 sticky top-0 backdrop-blur-sm text-slate-300/80" id="smashPercentage"></h1>
