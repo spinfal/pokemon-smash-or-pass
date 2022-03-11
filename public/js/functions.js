@@ -8,6 +8,18 @@ let smashCount = parseInt(sessionStorage.getItem('smashCount'));
 let passCount = parseInt(sessionStorage.getItem('passCount'));
 
 /**
+ * Escape HTML
+ * @returns {HTMLElement} - the element with the escaped HTML
+ */
+String.prototype.htmlEscape = function () {
+    const span = document.createElement('span');
+    const txt = document.createTextNode('');
+    span.appendChild(txt);
+    txt.data = this;
+    return span.innerHTML;
+};
+
+/**
  * Checks if user has clicked "smash" or "pass" and then runs the appropriate code
  * @param {object} e - the event object
  * @param {string} value - the choice the user has made. Either "smash" or "pass"
@@ -15,11 +27,12 @@ let passCount = parseInt(sessionStorage.getItem('passCount'));
 const choice = (e, value) => {
     if (!value || !e) return console.log('Invalid params passed to choice()');
     if (!e.isTrusted) return;
+    if (smash.disabled || pass.disabled) return;
 
-    if (parseInt(sessionStorage.getItem('currentPlace')) >= parseInt(sessionStorage.getItem('pokemonLength'))) {
+    if (parseInt(sessionStorage.getItem('currentPlace')) > parseInt(sessionStorage.getItem('pokemonLength'))) {
         return endDialog();
     }
-    
+
     try {
         // disable buttons
         smash.disabled = true;
@@ -39,14 +52,14 @@ const choice = (e, value) => {
         // update count, current place, and image
         if (value === 'smash') {
             smashCount++
-            smashPokemon.innerHTML += `<p><em>${pokemonName}</em></p>`;
+            smashPokemon.innerHTML += `<p><em>${pokemonName.htmlEscape()}</em></p>`;
             sessionStorage.setItem('smashCount', smashCount);
             smashNum.innerText = "Total: " + smashCount;
             smash.disabled = false;
             pass.disabled = false;
         } else if (value === 'pass') {
             passCount++;
-            passPokemon.innerHTML += `<p><em>${pokemonName}</em></p>`;
+            passPokemon.innerHTML += `<p><em>${pokemonName.htmlEscape()}</em></p>`;
             sessionStorage.setItem('passCount', passCount);
             passNum.innerHTML = "Total: " + passCount;
             smash.disabled = false;
@@ -81,10 +94,6 @@ const updateImage = (place, alt) => {
         pokemonImage.alt = alt ?? 'Pokemon Image';
         pokemonName.innerText = alt ?? 'N/A';
         console.log(place, parseInt(sessionStorage.getItem('pokemonLength')))
-        // load next image to speed up load
-        if (parseInt(place) !== parseInt(sessionStorage.getItem('pokemonLength'))) {
-            fetch(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${parseInt(place) + 1}.png`).then(() => console.info('Preloaded next image.')).catch(e => throwError(e));
-        }
     } catch (e) {
         throwError(e);
     }
@@ -103,25 +112,6 @@ const endDialog = () => {
     const dialog = document.getElementById('endDialog');
     dialog.show();
 }
-
-// /**
-//  * Set or get a sessionStorage item
-//  * @param {string} mode - whether to set or get an item
-//  * @param {json} data - the data that should contain the name (and new value if setting an item)
-//  */
-// const ss = (mode, data) => {
-//     try {
-//         if (mode === 'set') {
-//             sessionStorage.setItem(data.name, data.value);
-//         } else if (mode === 'get') {
-//             return sessionStorage.getItem(data.name);
-//         } else {
-//             console.log('Invalid params passed to ss()');
-//         }
-//     } catch (e) {
-//         throwError(e);
-//     }
-// }
 
 /**
  * Returns an error in the DevConsole and an alert()

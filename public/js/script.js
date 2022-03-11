@@ -13,6 +13,9 @@ const weeee = ['<3', 'owo', 'hi', 'spin.rip'];
 fetch('/api/pokemon').then(res => res.json()).then(data => {
     sessionStorage.setItem('pokemon', JSON.stringify(data));
     sessionStorage.setItem('pokemonLength', data.length);
+    if (parseInt(sessionStorage.getItem('currentPlace')) > parseInt(sessionStorage.getItem('pokemonLength'))) {
+        return endDialog();
+    }
     updateImage(currentPlace, data[currentPlace - 1]);
 
     // set dialog elements

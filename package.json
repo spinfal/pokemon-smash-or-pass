@@ -20,7 +20,8 @@
   "homepage": "https://github.com/spinfal/pokemon-smash-or-pass#readme",
   "dependencies": {
     "ejs": "^3.1.6",
-    "express": "^4.17.2"
+    "express": "^4.17.2",
+    "express-rate-limit": "^6.3.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
