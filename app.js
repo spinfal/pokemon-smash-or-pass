@@ -13,6 +13,7 @@ const apiLimiter = RateLimit({
 const app = express();
 
 /* middleware */
+app.disable('x-powered-by');
 app.use('*', apiLimiter);
 
 /* set view engine */
